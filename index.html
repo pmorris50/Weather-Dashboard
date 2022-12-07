@@ -8,25 +8,33 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
-<title>Title</title>
+<title>Weather Dashboard</title>
 </head>
 <body>
 <header>
-<h1>    
-Weather Dashboard</h1>
+<h1>Weather Dashboard</h1>
 </header>
+<main>
 <div>
     <form id = "weather-form">
-        <label for = "#city">"Search City: </label>
+        <label for = "#city">Search City: </label>
         <input id= "city"  type = "text">
         <button id= "searchingbtn" type ='submit'>Search</button>
     </form>
-
-
-
-
-
+<div>
+    <h1>Current Weather</h1>
+    <p class = 'current-weather'></p>
 </div>
+</div>
+<section class = 'five-day-forcast'>
+    <h2>5-Day Forecast</h2>
+    <div class = day-one></div>
+    <div class = day-twp></div>
+    <div class = day-three></div>
+    <div class = day-four></div>
+    <div class = day-five></div>
+
+</section>
 
 
 
@@ -38,8 +46,7 @@ Weather Dashboard</h1>
 
 
 
-
-
+</main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
