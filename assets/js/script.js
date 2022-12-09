@@ -13,6 +13,7 @@ var futureTemp = document.querySelectorAll('.future-temp');
 var futureWind = document.querySelectorAll('.future-wind');
 var futureHumidity = document.querySelectorAll('.future-humidity');
 var futureForecast = document.querySelectorAll('.day');
+var currentContainer = document.querySelector('.current-weather-box')
 today = dayjs()
 //get API call to happen when form is submitted
 
@@ -21,6 +22,12 @@ weatherForm.addEventListener('submit', function (e) {
     console.log(citySearch.value);
     fiveDay(citySearch.value);
     currentWeather(citySearch.value)
+    currentContainer.classList.remove('hide');
+    var citiesSaved = [];
+    citiesSaved.push(citySearch.value);
+    localStorage.setItem('city', JSON.stringify(citiesSaved));
+
+    
 });
 
 function fiveDay(cityName) {
@@ -36,12 +43,13 @@ function fiveDay(cityName) {
             //rendering current weather to HTML
             console.log(fiveDayForecast);
             for (i = 0; i < futureForecast.length; i++) {
-                for(j = 0; j < list.length)
+                
+                futureForecast[i].classList.remove('hide');
                
-                futureDate[i].textContent = fiveDayForecast.list[0].dt_txt;
-                futureTemp[i].textContent = fiveDayForecast.list[0].main.temp + " °F";
-                futureHumidity[i].textContent = fiveDayForecast.list[0].main.humidity + ' %';
-                futureWind[i].textContent = fiveDayForecast.list[0].wind.speed + ' MPH';
+                futureDate[i].textContent = fiveDayForecast.list[i*8].dt_txt;
+                futureTemp[i].textContent = fiveDayForecast.list[i*8].main.temp + " °F";
+                futureHumidity[i].textContent = fiveDayForecast.list[i*8].main.humidity + ' %';
+                futureWind[i].textContent = fiveDayForecast.list[i*8].wind.speed + ' MPH';
             }
 
             // futureDate[1].textContent= 
@@ -69,12 +77,12 @@ function currentWeather(cityName) {
             return response.json()
         }).then(function (weather) {
             console.log(weather);
-            cityNameCurrent.textContent = weather.name + ' ' + weather.icon; //weather icon displaying code not image
+            cityNameCurrent.textContent = weather.name; //weather icon displaying code not image
             weatherReport.textContent = today.format('dddd, MMM D') //add dayjs
             currentTemp.textContent = 'Temp: ' + weather.main.temp + ' °F'
             currentWind.textContent = "Wind: " + weather.wind.speed + ' MPH';
             currentHumidity.textContent = 'Humiditiy: ' + weather.main.humidity + ' %';
-
+            
 
         })
 }
@@ -88,3 +96,24 @@ function callCurrentWeather() {
 
 
 }
+
+// var going = true
+// var time = 60
+
+// function timer(){
+//     setInterval(( )=> {
+//         time --
+//     }, 1000)
+// }
+
+// while(!going){
+// clearInterval(timer())
+// }
+
+// while(going){
+//     timer()
+// }
+
+// GamepadButton.addEventListener("click", () => {
+//     going = !going
+// })

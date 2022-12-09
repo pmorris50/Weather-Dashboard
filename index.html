@@ -16,13 +16,13 @@
 </header>
 <main>
 <div>
-    <form id = "weather-form">
+    <form id = "weather-form" class="col-sm-12 col-md-8 ">
         <label for = "#city">Search City: </label>
         <input id= "city"  type = "text">
-        <button id= "searchingbtn" type ='submit'>Search</button>
+        <button class = 'btn-primary' id= "searchingbtn" type ='submit'>Search</button>
     </form>
 </div>
-<div class ='current-weather-box'>
+<div class ='card hide current-weather-box'>
     <h2 class ='name-city-current'></h2>
     <ul class = 'current-weather'></ul>
     <li id = 'tempurature'></li>
@@ -30,9 +30,9 @@
     <li id ='humidity'></li>
 </div>
 
-<section class = 'five-day-forcast'>
-    <h2>5-Day Forecast</h2>
-    <div class = 'day one'>
+<section class = 'container five-day-forecast'>
+    <h2 class ='hide'>5-Day Forecast</h2>
+    <div class = 'card day one hide'>
         <ul class = 'weather-forecast'></ul>
             <li class = 'future-temp'></li>
             <li class = 'future-wind'></li>
@@ -40,26 +40,26 @@
 
 
     </div>
-    <div class = 'day two'>
+    <div class = 'card day two hide'>
         <ul class = 'weather-forecast'></ul>
         <li class = 'future-temp'></li>
         <li class = 'future-wind'></li>
         <li class = 'future-humidity'></li>
     </div>
-    <div class = 'day three'>
+    <div class = 'card day three hide'>
         <ul class = 'weather-forecast'></ul>
         <li class = 'future-temp'></li>
         <li class = 'future-wind'></li>
         <li class = 'future-humidity'></li>
     </div>
     
-    <div class = 'day four'>
+    <div class = 'card day four hide'>
         <ul class = 'weather-forecast'></ul>
         <li class = 'future-temp'></li>
         <li class = 'future-wind'></li>
         <li class = 'future-humidity'></li>
     </div>
-    <div class = 'day five'>
+    <div class = 'card day five hide'>
         <ul class = 'weather-forecast'></ul>
         <li class = 'future-temp'></li>
         <li class = 'future-wind'></li>
