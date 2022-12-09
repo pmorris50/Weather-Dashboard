@@ -10,3 +10,12 @@ list-style-type: none;
 .hide{
     display: none;
 }
+
+header{
+    display:flex;
+    justify-content: center;
+    text-align: center;
+    background: blue;
+    color: white;
+
+}

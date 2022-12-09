@@ -15,6 +15,7 @@ var futureHumidity = document.querySelectorAll('.future-humidity');
 var futureForecast = document.querySelectorAll('.day');
 var currentContainer = document.querySelector('.current-weather-box')
 today = dayjs()
+var citiesSaved = [];
 //get API call to happen when form is submitted
 
 weatherForm.addEventListener('submit', function (e) {
@@ -23,7 +24,6 @@ weatherForm.addEventListener('submit', function (e) {
     fiveDay(citySearch.value);
     currentWeather(citySearch.value)
     currentContainer.classList.remove('hide');
-    var citiesSaved = [];
     citiesSaved.push(citySearch.value);
     localStorage.setItem('city', JSON.stringify(citiesSaved));
 
@@ -96,6 +96,8 @@ function callCurrentWeather() {
 
 
 }
+
+
 
 // var going = true
 // var time = 60

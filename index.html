@@ -12,12 +12,12 @@
 </head>
 <body>
 <header>
-<h1>Weather Dashboard</h1>
+<h1>Weather Forecast</h1>
 </header>
 <main>
 <div>
-    <form id = "weather-form" class="col-sm-12 col-md-8 ">
-        <label for = "#city">Search City: </label>
+    <form id = "weather-form" class="col-sm-12 col-md-8 col-lg-12  m-4">
+        <label for = "#city">City: </label>
         <input id= "city"  type = "text">
         <button class = 'btn-primary' id= "searchingbtn" type ='submit'>Search</button>
     </form>
@@ -32,7 +32,7 @@
 
 <section class = 'container five-day-forecast'>
     <h2 class ='hide'>5-Day Forecast</h2>
-    <div class = 'card day one hide'>
+    <div class = 'card day hide'>
         <ul class = 'weather-forecast'></ul>
             <li class = 'future-temp'></li>
             <li class = 'future-wind'></li>
@@ -40,30 +40,43 @@
 
 
     </div>
-    <div class = 'card day two hide'>
+    
+    <div class = 'card day hide'>
         <ul class = 'weather-forecast'></ul>
         <li class = 'future-temp'></li>
         <li class = 'future-wind'></li>
         <li class = 'future-humidity'></li>
     </div>
-    <div class = 'card day three hide'>
+    <div class = 'card day hide'>
         <ul class = 'weather-forecast'></ul>
         <li class = 'future-temp'></li>
         <li class = 'future-wind'></li>
         <li class = 'future-humidity'></li>
     </div>
     
-    <div class = 'card day four hide'>
+    <div class = 'card day hide'>
         <ul class = 'weather-forecast'></ul>
         <li class = 'future-temp'></li>
         <li class = 'future-wind'></li>
         <li class = 'future-humidity'></li>
     </div>
-    <div class = 'card day five hide'>
+    <div class = 'card day hide'>
         <ul class = 'weather-forecast'></ul>
         <li class = 'future-temp'></li>
         <li class = 'future-wind'></li>
         <li class = 'future-humidity'></li>
+    </div>
+    <div class ='display-search'>
+        <h2 class = 'search-history'>
+            <ul>
+
+
+
+            </ul>
+        </h2>
+
+
+
     </div>
 
 </section>
