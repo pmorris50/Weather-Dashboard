@@ -1,4 +1,4 @@
-//
+
 var citySearch = document.querySelector("#city");
 var weatherForm = document.querySelector('#weather-form');
 var diisplayCurrentWeather = document.querySelector('#current-weather');
@@ -14,26 +14,27 @@ var futureWind = document.querySelectorAll('.future-wind');
 var futureHumidity = document.querySelectorAll('.future-humidity');
 var futureForecast = document.querySelectorAll('.day');
 var currentContainer = document.querySelector('.current-weather-box')
-today = dayjs()
+var today = dayjs()
 var citiesSaved = [];
-//get API call to happen when form is submitted
+var searchHistoryList = document.querySelector('.search-history')
+var buttonParent = document.querySelector('.button-parent');
+
 
 weatherForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    console.log(citySearch.value);
+    // console.log(citySearch.value);
     fiveDay(citySearch.value);
     currentWeather(citySearch.value)
     currentContainer.classList.remove('hide');
     citiesSaved.push(citySearch.value);
     localStorage.setItem('city', JSON.stringify(citiesSaved));
-
-    
+   
 });
 
 function fiveDay(cityName) {
     var units = 'imperial';
     var lang = 'en';
-    console.log(cityName)
+    //console.log(cityName)
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}&units=${units}&lang=${lang}`)
         .then(function (response) {
 
@@ -43,28 +44,15 @@ function fiveDay(cityName) {
             //rendering current weather to HTML
             console.log(fiveDayForecast);
             for (i = 0; i < futureForecast.length; i++) {
-                
+
                 futureForecast[i].classList.remove('hide');
-               
-                futureDate[i].textContent = fiveDayForecast.list[i*8].dt_txt;
-                futureTemp[i].textContent = fiveDayForecast.list[i*8].main.temp + " °F";
-                futureHumidity[i].textContent = fiveDayForecast.list[i*8].main.humidity + ' %';
-                futureWind[i].textContent = fiveDayForecast.list[i*8].wind.speed + ' MPH';
+
+                futureDate[i].textContent = fiveDayForecast.list[i * 8].dt_txt;
+                futureTemp[i].textContent = fiveDayForecast.list[i * 8].main.temp + " °F";
+                futureHumidity[i].textContent = fiveDayForecast.list[i * 8].main.humidity + ' %';
+                futureWind[i].textContent = fiveDayForecast.list[i * 8].wind.speed + ' MPH';
             }
-
-            // futureDate[1].textContent= 
-
-
-
-
-
-
-
-
-
-
-        })
-
+         })
 }
 
 
@@ -77,45 +65,32 @@ function currentWeather(cityName) {
             return response.json()
         }).then(function (weather) {
             console.log(weather);
-            cityNameCurrent.textContent = weather.name; //weather icon displaying code not image
-            weatherReport.textContent = today.format('dddd, MMM D') //add dayjs
+            
+            cityNameCurrent.textContent = weather.name; 
+            weatherReport.textContent = today.format('dddd, MMM D') 
             currentTemp.textContent = 'Temp: ' + weather.main.temp + ' °F'
             currentWind.textContent = "Wind: " + weather.wind.speed + ' MPH';
             currentHumidity.textContent = 'Humiditiy: ' + weather.main.humidity + ' %';
-            
+
 
         })
 }
 
+function renderLocalOnLoad() {
+    cityArray = JSON.parse(localStorage.getItem('city'));
 
-function displayCurrentWeather() {
-}
+   // console.log(cityArray);
+    
+    if(cityArray != null){ 
+        for (i = 0; i < cityArray.length; i++) {
+        var previousButtons = document.createElement('button');
+        previousButtons.classList.add('btn');
+        previousButtons.textContent = cityArray[i];
+        buttonParent.appendChild(previousButtons);
+         }
+    }}
+renderLocalOnLoad();
 
-function callCurrentWeather() {
 
 
 
-}
-
-
-
-// var going = true
-// var time = 60
-
-// function timer(){
-//     setInterval(( )=> {
-//         time --
-//     }, 1000)
-// }
-
-// while(!going){
-// clearInterval(timer())
-// }
-
-// while(going){
-//     timer()
-// }
-
-// GamepadButton.addEventListener("click", () => {
-//     going = !going
-// })
