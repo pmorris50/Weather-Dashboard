@@ -18,7 +18,7 @@ var today = dayjs()
 var citiesSaved = [];
 var searchHistoryList = document.querySelector('.search-history')
 var buttonParent = document.querySelector('.button-parent');
-
+var forecastHeader = document.querySelector('.forecast');
 
 weatherForm.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -26,6 +26,7 @@ weatherForm.addEventListener('submit', function (e) {
     fiveDay(citySearch.value);
     currentWeather(citySearch.value)
     currentContainer.classList.remove('hide');
+    forecastHeader.classList.remove('hide');
     citiesSaved.push(citySearch.value);
     localStorage.setItem('city', JSON.stringify(citiesSaved));
    
@@ -44,7 +45,7 @@ function fiveDay(cityName) {
             //rendering current weather to HTML
             console.log(fiveDayForecast);
             for (i = 0; i < futureForecast.length; i++) {
-
+                
                 futureForecast[i].classList.remove('hide');
 
                 futureDate[i].textContent = fiveDayForecast.list[i * 8].dt_txt;
