@@ -24,18 +24,30 @@ var removeHide = document.querySelectorAll('.hide');
 weatherForm.addEventListener('submit', function (e) {
     e.preventDefault();
     // console.log(citySearch.value);
-    fiveDay(citySearch.value);
-    currentWeather(citySearch.value);
-    for(var i = 0; i< removeHide.length; i++){
-    removeHide[i].classList.remove('hide');
-    }
+   
     // currentContainer.classList.remove('hide');
     // forecastLength.classList.remove('hide');
-    
+    getWeather(citySearch.value)
     citiesSaved.push(citySearch.value);
     localStorage.setItem('city', JSON.stringify(citiesSaved));
    
 });
+
+buttonParent.addEventListener('click', function(event) {
+    event.preventDefault();
+    if (event.target.matches('button')) {
+        console.log(event.target.textContent)
+        getWeather(event.target.textContent)
+    }
+})
+
+function getWeather(cityName) {
+    fiveDay(cityName);
+    currentWeather(cityName);
+    for(var i = 0; i< removeHide.length; i++){
+    removeHide[i].classList.remove('hide');
+    }
+}
 
 function fiveDay(cityName) {
     var units = 'imperial';
@@ -83,7 +95,7 @@ function currentWeather(cityName) {
 }
 
 function renderLocalOnLoad() {
-    cityArray = JSON.parse(localStorage.getItem('city'));
+    cityArray = JSON.parse(localStorage.getItem('city')) || [];
 
    // console.log(cityArray);
     
