@@ -13,20 +13,25 @@ var futureTemp = document.querySelectorAll('.future-temp');
 var futureWind = document.querySelectorAll('.future-wind');
 var futureHumidity = document.querySelectorAll('.future-humidity');
 var futureForecast = document.querySelectorAll('.day');
-var currentContainer = document.querySelector('.current-weather-box')
+//var currentContainer = document.querySelector('.current-weather-box')
 var today = dayjs()
 var citiesSaved = [];
 var searchHistoryList = document.querySelector('.search-history')
 var buttonParent = document.querySelector('.button-parent');
-var forecastHeader = document.querySelector('.forecast');
+//var forecastLength = document.querySelectorAll('.forecast');
+var removeHide = document.querySelectorAll('.hide');
 
 weatherForm.addEventListener('submit', function (e) {
     e.preventDefault();
     // console.log(citySearch.value);
     fiveDay(citySearch.value);
-    currentWeather(citySearch.value)
-    currentContainer.classList.remove('hide');
-    forecastHeader.classList.remove('hide');
+    currentWeather(citySearch.value);
+    for(var i = 0; i< removeHide.length; i++){
+    removeHide[i].classList.remove('hide');
+    }
+    // currentContainer.classList.remove('hide');
+    // forecastLength.classList.remove('hide');
+    
     citiesSaved.push(citySearch.value);
     localStorage.setItem('city', JSON.stringify(citiesSaved));
    
@@ -67,7 +72,7 @@ function currentWeather(cityName) {
         }).then(function (weather) {
             console.log(weather);
             
-            cityNameCurrent.textContent = weather.name; 
+            cityNameCurrent.textContent = weather.name + ' Weather'; 
             weatherReport.textContent = today.format('dddd, MMM D') 
             currentTemp.textContent = 'Temp: ' + weather.main.temp + ' °F'
             currentWind.textContent = "Wind: " + weather.wind.speed + ' MPH';

@@ -11,11 +11,29 @@ list-style-type: none;
     display: none;
 }
 
-header{
+/* header{
     display:flex;
     justify-content: center;
     text-align: center;
     background: blue;
     color: white;
 
+} */
+
+body{
+background-image: url('../images/background.jpg') ;
+background-repeat: no-repeat;
+background-size: cover;
+text-shadow: 1px 1px 2px black;
+color: rgb(210, 201, 201)
+
+}
+h1{
+    text-shadow: 1px 1px 2px black;
+    color: rgb(210, 201, 201)
+}
+
+.btn{
+    text-shadow: 1px 1px 2px black;
+    color: rgb(210, 201, 201)
 }
